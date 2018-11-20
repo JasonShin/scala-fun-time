@@ -26,7 +26,7 @@ object Recursions extends App {
     factHelper(n, 1)
   }
 
-  println(anotherFactorial(5000))
+  // println(anotherFactorial(5000))
 
   // WHEN YOU NEED LOOPS: USE TAIL RECURSION
 
@@ -44,5 +44,17 @@ object Recursions extends App {
     concatHelper(n, str)
   }
 
-  println(concat(100000, "hello"))
+  // println(concat(100000, "hello"))
+
+  def anotherFib(n: Int): BigInt = {
+    def fibTrailRec(i: BigInt, last: BigInt, nextToLast: BigInt): BigInt = {
+      if(i >= n) last
+      else fibTrailRec(i + 1, last + nextToLast, last)
+    }
+
+    if(n <= 2) 1
+    else fibTrailRec(2, 1, 1)
+  }
+
+  println(anotherFib(8))
 }
