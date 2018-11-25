@@ -15,6 +15,11 @@ object OOPBasics extends App {
 
   println(novel.authorAge)
   println(novel.isWrittenBy(author))
+
+  val counter = new Counter
+  counter.inc.print
+  counter.inc.inc.inc.print
+  counter.inc(10).print
 }
 
 class Person(name: String, val age: Int) {
@@ -60,11 +65,26 @@ class Novel(name: String, year: Int, author: Writer) {
   *   - method to increment/decrement => new counter
   *   - overload inc/dec to receive an amount
   */
+class Counter(val count: Int = 0) {
+  def inc = {
+    println("increment")
+    new Counter(count + 1)  // immutability
+  }
+  def dec = {
+    println("decrement")
+    new Counter(count - 1)
+  }
 
-class Counter(val count: Int) {
-  def inc = new Counter(count + 1)  // immutability
-  def dec = new Counter(count - 1)
+  def inc(n: Int): Counter = {
+    if (n <= 0) this
+    else inc.inc(n - 1)
+    // new Counter(count + n)
+  }
+  def dec(n: Int): Counter = {
+    if (n <= 0) this
+    else dec.dec(n - 1)
+    // new Counter(count - n)
+  }
 
-  def inc(n: Int) = new Counter(count + n)
-  def dec(n: Int) = new Counter(count - n)
+  def print = println(count)
 }
