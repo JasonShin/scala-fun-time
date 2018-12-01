@@ -44,6 +44,7 @@ object Generics extends App {
 
   // Bound types
 
+  /*
   // Only accepts subtypes of Animal
   class Cage[A <: Animal](animal: A)
   // Only accepts supertypes
@@ -52,4 +53,5 @@ object Generics extends App {
 
   class Car
   val newCage = new Cage(new Car)
+  */
 }
