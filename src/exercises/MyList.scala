@@ -1,6 +1,6 @@
 package exercises
 
-abstract class MyList {
+abstract class MyList[+A] {
 
   /*
   head = first element of this list
@@ -10,10 +10,10 @@ abstract class MyList {
   toString => a string representation of the list
    */
 
-  def head: Int
-  def tail: MyList
+  def head: A
+  def tail: MyList[A]
   def isEmpty: Boolean
-  def add(element: Int): MyList
+  def add(element: A): MyList[A]
   protected def printsElements: String
   override def toString: String = "[" + printsElements + "]"
   // def toString: String
